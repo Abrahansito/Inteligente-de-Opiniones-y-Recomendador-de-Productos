@@ -1,0 +1,23 @@
+@model PC4PROGRAMACION.Models.SentimentModel
+
+<h2>Analizador de Sentimiento</h2>
+
+<form method="post" asp-controller="Sentiment" asp-action="Index">
+   <div class="form-group">
+        <label for="Mensaje">Ingrese su opinión:</label><br/>
+        <textarea name="Mensaje" rows="4" cols="50" class="form-control">@Model?.Mensaje</textarea>
+        @Html.ValidationMessageFor(model => model.Mensaje, "", new { @class = "text-danger" })
+        <br/>
+        <button type="submit" class="btn btn-primary">Analizar</button>
+    </div>
+</form>
+
+<br>
+@if (Model != null)
+{
+    <div>
+        <p><strong>Opinión:</strong> @Model.Mensaje</p>
+        <p><strong>Sentimiento:</strong> @Model.Prediction</p>
+        <p><strong>Score:</strong> @Model.Score</p>
+    </div>
+}
