@@ -1,0 +1,22 @@
+@model PC4PROGRAMACION.Models.ProductRecommendation
+
+<h2>Recomendador de Productos</h2>
+
+<form method="post" asp-controller="Recommendation" asp-action="Recommend">
+    <label for="userId">User ID:</label>
+    <input type="number" name="userId" value="@Model?.UserId" required />
+    <button type="submit">Obtener recomendaciones</button>
+</form>
+
+@if (Model?.RecommendedProducts?.Count > 0)
+{
+    <h3>Top 5 productos recomendados para el usuario @Model.UserId:</h3>
+    <ul>
+        @foreach (var p in Model.RecommendedProducts)
+        {
+            <li>
+                Producto <strong>@p.ProductId</strong> – Score estimado: <strong>@p.Score.ToString("0.00")</strong>
+            </li>
+        }
+    </ul>
+}

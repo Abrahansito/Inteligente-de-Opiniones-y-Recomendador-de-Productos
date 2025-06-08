@@ -13,8 +13,9 @@ public class ApplicationDbContext : IdentityDbContext
 
 
 
-    
+
     public DbSet<SentimentModel> Sentimiento { get; set; }
+    public DbSet<Recomendacion> Recomendaciones { get; set; }
 }
 
 
